@@ -22,7 +22,32 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+2.2.2-p95(main)> require 'tenkijp'
+2.2.2-p95(main)> puts TenkiJp::Forecast.new('しぶや').to_s
+東京都渋谷区の天気
+■ 今日 09/07(月) 「曇一時雨」 降水確率: 60%
+日焼け対策をして、紫外線をガード
+[気温] 最低: 23° (+1), 最高: 28° (+1)
+[降水確率] 0時: 60%, 6時: 40%, 12時: 20%, 18時: 20%
+
+■ 明日 09/08(火) 「雨時々曇」 降水確率: 70%
+ジワーっと暑いです。不快に感じる暑さ
+[気温] 最低: 23° (0), 最高: 25° (-3)
+[降水確率] 0時: 40%, 6時: 50%, 12時: 60%, 18時: 70%
+
+
+   日付   |   天気   | 降水 | 最低 | 最高
+-----------------------------------------
+09/09(水) | 雨　　　 |  60% |  24° |  21°
+09/10(木) | 曇時々雨 |  60% |  25° |  20°
+09/11(金) | 曇　　　 |  40% |  26° |  19°
+09/12(土) | 曇時々晴 |  20% |  28° |  20°
+09/13(日) | 曇時々晴 |  40% |  28° |  21°
+09/14(月) | 晴→雨　 |  60% |  28° |  23°
+09/15(火) | 雨時々曇 |  80% |  28° |  23°
+09/16(水) | ---　 |  ---% |  --- |  ---
+```
 
 ## Development
 
@@ -38,4 +63,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
