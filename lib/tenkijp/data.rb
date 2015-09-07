@@ -29,10 +29,10 @@ EOB
           week_09: '曇時々晴',
           week_10: '曇時々雨',
 
-
           week_15: '雨',
           week_16: '雨時々晴',
           week_17: '雨時々曇',
+          week_19: '雨→晴',
           week_20: '雨→曇',
         }[str.to_sym] || str
         w + (4-w.size).times.map{'　'}.join
