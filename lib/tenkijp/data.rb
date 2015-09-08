@@ -11,7 +11,7 @@ module TenkiJp
         str << '-' * 41 + "\n"
         @d.map { |d|
           str << <<EOB
-#{d['dt']}(#{d['dy']}) | #{wh(d['wh'])} |  #{d['p_day']}% |  #{d['max_t']} |  #{d['min_t']}
+#{d['dt']}(#{d['dy']}) | #{wh(d['wh'])} |  #{d['p_day']}% |  #{d['min_t']} |  #{d['max_t']}
 EOB
         }
         str
