@@ -20,20 +20,38 @@ EOB
       def wh(str)
         w = {
           week_01: '晴',
-          week_02: '晴時々曇', #?
-          week_03: '晴時々雨',
+          week_02: '晴時々曇',
+          week_03: '晴一時雨',
+          week_04: '晴一時雪',
           week_05: '晴→曇',
           week_06: '晴→雨',
+          week_07: '晴→雪',
 
           week_08: '曇',
           week_09: '曇時々晴',
-          week_10: '曇時々雨',
+          week_10: '曇一時雨',
+          week_11: '曇一時雪',
+          week_12: '曇→晴',
+          week_13: '曇→雨',
+          week_14: '曇→雪',
 
           week_15: '雨',
           week_16: '雨時々晴',
           week_17: '雨時々曇',
+          week_18: '雨時々雪',
           week_19: '雨→晴',
           week_20: '雨→曇',
+          week_21: '雨→雪',
+          week_22: '暴風雨?',
+
+          week_23: '雪',
+          week_24: '雪時々晴',
+          week_25: '雪時々曇',
+          week_26: '雪時々雨',
+          week_27: '雪→晴',
+          week_28: '雪→曇',
+          week_29: '雪→雨',
+          week_30: '大雪?',
         }[str.to_sym] || str
         w + (4-w.size).times.map{'　'}.join
       end
