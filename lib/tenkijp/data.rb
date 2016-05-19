@@ -7,11 +7,11 @@ module TenkiJp
       end
 
       def to_s
-        str = "   日付   |   天気   | 降水 | 最低 | 最高\n"
+        str = "     日付      |     天気     | 降水 | 最低 | 最高\n"
         str << '-' * 41 + "\n"
         @d.map { |d|
           str << <<EOB
-#{d['dt']}(#{d['dy']}) | #{wh(d['wh'])} |  #{d['p_day']}% |  #{d['min_t']} |  #{d['max_t']}
+#{d['dt']}(#{d['dy']}) | #{wh(d['wh'])} |  #{"%2s" % d['p_day']}% |  #{d['min_t']} |  #{d['max_t']}
 EOB
         }
         str
