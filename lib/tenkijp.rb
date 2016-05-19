@@ -13,10 +13,10 @@ module TenkiJp
 
     def to_s
       return <<EOB
-#{@location.full}の天気
-#{two_days.map(&:to_s).join("\n")}
-
+■ #{@location.full}の天気
 #{week.to_s}
+
+#{two_days.map(&:index).join("\n")}
 EOB
     end
 
@@ -27,7 +27,7 @@ EOB
     end
 
     def week
-      Data::Week.new @data['tenweek']['entries']
+      Data::Week.new(@data['days']['entries'], @data['tenweek']['entries'])
     end
   end
 end

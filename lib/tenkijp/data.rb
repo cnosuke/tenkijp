@@ -2,16 +2,18 @@ module TenkiJp
   class Data
 
     class Week
-      def initialize(data)
-        @d = data
+      def initialize(days, tenweek)
+        @days    = days
+        @tenweek = tenweek
       end
 
       def to_s
-        str = "     日付      |     天気     | 降水 | 最低 | 最高\n"
-        str << '-' * 41 + "\n"
-        @d.map { |d|
+        str = "     日付      |     天気     | 最低 | 最高 | 降水 (0時, 6時, 12時, 18時)\n"
+        str << '-' * 74 + "\n"
+        @days.each { |d| str << Day.new(d).to_s }
+        @tenweek.each { |d|
           str << <<EOB
-#{d['dt']}(#{d['dy']}) | #{wh(d['wh'])} |  #{"%2s" % d['p_day']}% |  #{d['min_t']} |  #{d['max_t']}
+#{d['dt']}(#{d['dy']}) | #{wh(d['wh'])} |  #{d['min_t']}  |  #{d['max_t']}  |  #{"%2s" % d['p_day']}%
 EOB
         }
         str
@@ -86,12 +88,18 @@ EOB
       end
 
       def to_s
-        return <<EOB
-■ #{@d['ds']} #{@d['dt']}(#{@d['dy']}) 「#{@d['wt']}」 降水確率: #{@d['p_day']}%
-#{@d['index_str']}
-[気温] 最低: #{@d['min_t']} (#{@d['min_t_d']}), 最高: #{@d['max_t']} (#{@d['max_t_d']})
-[降水確率] 0時: #{@d['p_zero']}%, 6時: #{@d['p_six']}%, 12時: #{@d['p_twelve']}%, 18時: #{@d['p_eighteen']}%
+        w = <<EOB
+#{@d['dt']}(#{@d['dy']}) | #{spaced_wt} |  #{@d['min_t']}  |  #{@d['max_t']}  |  #{"%2s" % @d['p_day']}% (#{@d['p_zero']}%, #{@d['p_six']}%, #{@d['p_twelve']}%, #{@d['p_eighteen']}%)
 EOB
+      end
+
+      def spaced_wt
+        wt = @d['wt']
+        wt + (4-wt.size).times.map{'　'}.join
+      end
+
+      def index
+        "#{@d['ds']}は、#{@d['index_str']}。"
       end
     end
   end
